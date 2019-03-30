@@ -14,6 +14,7 @@ function DomDisplay(parent,level) {
     
     //this.wrap.appendChild();
    this.wrap.appendChild(this.drawBackground());
+   this.wrap.appendChild(this.drawActors());
 }
 
 // Pasamos uno de los métodos y lo añadimos como prototype
@@ -32,4 +33,20 @@ DomDisplay.prototype.drawBackground = function () {
     });
 
     return table;
+}
+
+DomDisplay.prototype.drawActors = function () {
+    let actorsWrap = createElement('div');   //Envolvemos cada actor en un div
+    this.level.actors.map(actor => {
+        let actorElement = createElement('div', `actor ${actor.type}`);
+        let rect = actorsWrap.appendChild(actorElement);
+        rect.style.width = actor.size.x * SCALE + 'px';
+        rect.style.height = actor.size.y * SCALE + 'px';
+        rect.style.left = actor.position.x * SCALE + 'px';
+        rect.style.top = actor.position.y * SCALE + 'px';
+    });
+
+    
+    return actorsWrap;
+
 }
