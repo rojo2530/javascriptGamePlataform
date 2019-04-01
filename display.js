@@ -14,7 +14,9 @@ function DomDisplay(parent,level) {
     
     //this.wrap.appendChild();
    this.wrap.appendChild(this.drawBackground());
-   this.wrap.appendChild(this.drawActors());
+   //this.wrap.appendChild(this.drawActors());
+   this.actorLayer = null;
+    this.drawFrame();;
 }
 
 // Pasamos uno de los métodos y lo añadimos como prototype
@@ -44,9 +46,22 @@ DomDisplay.prototype.drawActors = function () {
         rect.style.height = actor.size.y * SCALE + 'px';
         rect.style.left = actor.position.x * SCALE + 'px';
         rect.style.top = actor.position.y * SCALE + 'px';
+      //  if (actor.type === 'player')
+      //      actorElement.appendChild(createElement('img','playerchulo'));
+        
     });
 
-    
     return actorsWrap;
+}
 
+DomDisplay.prototype.drawFrame = function () {
+    if (this.actorLayer) 
+        this.wrap.removeChild(this.actorLayer);
+    this.actorLayer = this.wrap.appendChild(this.drawActors());
+    this.wrap.className = 'game ' + (this.level.status || '');
+
+}
+    
+DomDisplay.prototype.clear = function () {
+    this.wrap.parentNode.removeChild(this.wrap);
 }

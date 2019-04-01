@@ -1,5 +1,9 @@
 const ACTORS = {
-    'o': Coin
+    'o': Coin,
+    '@': Player,
+    '=': Lava,
+    '|': Lava,
+    'v': Lava
 
 };
 
