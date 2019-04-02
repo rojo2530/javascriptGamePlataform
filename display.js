@@ -16,7 +16,7 @@ function DomDisplay(parent,level) {
    this.wrap.appendChild(this.drawBackground());
    //this.wrap.appendChild(this.drawActors());
    this.actorLayer = null;
-    this.drawFrame();;
+    //this.drawFrame();;
 }
 
 // Pasamos uno de los métodos y lo añadimos como prototype
@@ -63,5 +63,5 @@ DomDisplay.prototype.drawFrame = function () {
 }
     
 DomDisplay.prototype.clear = function () {
-    this.wrap.parentNode.removeChild(this.wrap);
+    this.wrap.parentNode.removeChild(this.wrap); //Me elimino a mi mismo
 }
